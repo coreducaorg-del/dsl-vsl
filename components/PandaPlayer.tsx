@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type IframeHTMLAttributes } from "react";
+
+// `fetchPriority` é um atributo HTML válido e suportado pelos navegadores
+// modernos, mas ainda não está tipado em React.IframeHTMLAttributes nesta
+// versão do TypeScript/@types/react. Estendemos o tipo apenas aqui, só para
+// o <iframe> do player, sem afetar a checagem de tipos do resto do arquivo.
+type IframeProps = IframeHTMLAttributes<HTMLIFrameElement> & {
+  fetchPriority?: "high" | "low" | "auto";
+};
 
 declare global {
   interface Window {
@@ -38,18 +46,20 @@ export default function PandaPlayer() {
     });
   }, []);
 
+  const iframeProps: IframeProps = {
+    id: PANDA_ID_PLAYER,
+    src: "https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/?v=c0dda076-875f-4304-befb-66af54fd5631&iosFakeFullscreen=true",
+    style: { border: "none", position: "absolute", top: 0, left: 0 },
+    allow: "accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture",
+    allowFullScreen: true,
+    width: "100%",
+    height: "100%",
+    fetchPriority: "high",
+  };
+
   return (
     <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
-      <iframe
-        id={PANDA_ID_PLAYER}
-        src="https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/?v=c0dda076-875f-4304-befb-66af54fd5631&iosFakeFullscreen=true"
-        style={{ border: "none", position: "absolute", top: 0, left: 0 }}
-        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
-        allowFullScreen
-        width="100%"
-        height="100%"
-        fetchPriority="high"
-      />
+      <iframe {...iframeProps} />
     </div>
   );
 }
