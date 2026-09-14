@@ -80,7 +80,7 @@ export default function PandaPlayer() {
       </div>
       {/* Destino do botão de CTA temporizado (loadButtonInTime), injetado
           pelo próprio script da Panda no instante configurado no painel. */}
-      <div id={PANDA_BUTTON_CONTAINER_ID} />
+      <div id={PANDA_BUTTON_CONTAINER_ID} style={{ marginTop: 24 }} />
     </>
   );
 }
