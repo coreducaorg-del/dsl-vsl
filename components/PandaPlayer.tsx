@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, type IframeHTMLAttributes } from "react";
-import Script from "next/script";
 
 // `fetchPriority` é um atributo HTML válido e suportado pelos navegadores
 // modernos, mas ainda não está tipado em React.IframeHTMLAttributes nesta
@@ -25,10 +24,23 @@ const PANDA_ID_PLAYER = "panda-c0dda076-875f-4304-befb-66af54fd5631";
 
 export default function PandaPlayer() {
   useEffect(() => {
-    // A fila `pandascripttag` funciona independente do momento em que o
-    // script da Panda termina de carregar: o próprio script processa (e
-    // continua processando) tudo que for empilhado aqui, então não precisa
-    // esperar nenhum callback de "carregado" para empilhar a inicialização.
+    // Injeção manual (em vez de next/script) porque o vídeo é o elemento
+    // principal/herói da página: precisamos que o carregamento comece o
+    // mais cedo possível, e strategy="beforeInteractive" do next/script só
+    // tem esse efeito quando declarado no Root Layout — aqui, num Client
+    // Component fora do layout raiz, ele é tratado como um script comum
+    // (mesmo comportamento de afterInteractive), sem ganho nenhum.
+    if (
+      !document.querySelector(
+        'script[src="https://player.pandavideo.com.br/api.v2.js"]'
+      )
+    ) {
+      const s = document.createElement("script");
+      s.src = "https://player.pandavideo.com.br/api.v2.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
     window.pandascripttag = window.pandascripttag || [];
     window.pandascripttag.push(function () {
       const panda_id_player = PANDA_ID_PLAYER;
@@ -52,18 +64,8 @@ export default function PandaPlayer() {
   };
 
   return (
-    <>
-      {/* strategy="afterInteractive": carrega o script assim que a página
-          fica interativa, sem bloquear a renderização inicial (troca a
-          antiga injeção manual via document.createElement por cima do
-          carregador de scripts nativo do Next.js). */}
-      <Script
-        src="https://player.pandavideo.com.br/api.v2.js"
-        strategy="afterInteractive"
-      />
-      <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
-        <iframe {...iframeProps} />
-      </div>
-    </>
+    <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
+      <iframe {...iframeProps} />
+    </div>
   );
 }
