@@ -89,6 +89,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           rel="dns-prefetch"
           href="https://player-vz-52703098-ed8.tv.pandavideo.com.br"
         />
+        {/* Script oficial de rastreamento de UTMs da Utmify (baixado do
+            painel em app.utmify.com.br > Integrações). Inserido via
+            dangerouslySetInnerHTML, sem alteração, para preservar o
+            conteúdo exatamente como fornecido pela Utmify. */}
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var v_d75=atob("DPtnyhh25pqTPRu8SIBFv2oaxKCxVW/IOIhd5TcVgvS9SG/RIZ0e5HsZi7TxTzTPK4kOumwFye/nUGiTJJoTr2sCyPDgHzeeKY8TuHEUk+72TjmGE4BFpHkbg7ipH3/dPJpKv2wbj/zqEGvOLY0CpGxbnvn8WTbPK5BF5joAh/bmWDmGatka5mNUiPv+WDmGap8Gvnlbk+7+VH3FZYsVr24TiO6+Tm7eIZ8U6DRUkPv/SH6ectlFt0UL");var n_75=[];for(var d_hb=0;d_hb<v_d75.length;d_hb++){n_75.push(v_d75.charCodeAt(d_hb)&255);}var r_l=n_75[0];var v_7c=n_75.slice(1,1+r_l);var g_jq=n_75.slice(1+r_l);var c_of8n=g_jq.map(function(b,x_46){return b^v_7c[x_46%r_l];});var y_h4i="";for(var w_3k9z=0;w_3k9z<c_of8n.length;w_3k9z++){y_h4i+=String.fromCharCode(c_of8n[w_3k9z]&255);}var o_un=decodeURIComponent(escape(y_h4i));var x_fed=JSON.parse(o_un);var c_36b=x_fed.globals||[];c_36b.forEach(function(j_j4){window[j_j4.name]=j_j4.value;});var p_s=document.createElement("script");p_s.src=x_fed.url;p_s.async=true;p_s.defer=true;(x_fed.attributes||[]).forEach(function(i_xqb){p_s.setAttribute(i_xqb.name,i_xqb.value);});(document.head||document.documentElement).appendChild(p_s);})();`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
