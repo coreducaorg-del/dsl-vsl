@@ -34,11 +34,11 @@ export default function Home() {
       {/* 3. RODAPÉ */}
       <footer className="w-full bg-black px-4 py-8">
         <p className="text-center text-xs text-gray-400">
-          DORAMASEMLEGENDA © TODOS OS DIREITOS RESERVADOS
+          DORAMA SEM LEGENDA © TODOS OS DIREITOS RESERVADOS
         </p>
 
         <div className="mx-auto mt-4 flex w-full max-w-4xl flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
-          <span className="text-base font-bold text-white">DORAMASEMLEGENDA</span>
+          <span className="text-base font-bold text-white">DORAMA SEM LEGENDA</span>
 
           <div className="flex items-center gap-6">
             <a href="#" className="text-sm text-white hover:underline">
