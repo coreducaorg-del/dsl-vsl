@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type IframeHTMLAttributes } from "react";
+import Script from "next/script";
 
 // `fetchPriority` é um atributo HTML válido e suportado pelos navegadores
 // modernos, mas ainda não está tipado em React.IframeHTMLAttributes nesta
@@ -24,17 +25,10 @@ const PANDA_ID_PLAYER = "panda-c0dda076-875f-4304-befb-66af54fd5631";
 
 export default function PandaPlayer() {
   useEffect(() => {
-    if (
-      !document.querySelector(
-        'script[src="https://player.pandavideo.com.br/api.v2.js"]'
-      )
-    ) {
-      const s = document.createElement("script");
-      s.src = "https://player.pandavideo.com.br/api.v2.js";
-      s.async = true;
-      document.head.appendChild(s);
-    }
-
+    // A fila `pandascripttag` funciona independente do momento em que o
+    // script da Panda termina de carregar: o próprio script processa (e
+    // continua processando) tudo que for empilhado aqui, então não precisa
+    // esperar nenhum callback de "carregado" para empilhar a inicialização.
     window.pandascripttag = window.pandascripttag || [];
     window.pandascripttag.push(function () {
       const panda_id_player = PANDA_ID_PLAYER;
@@ -58,8 +52,18 @@ export default function PandaPlayer() {
   };
 
   return (
-    <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
-      <iframe {...iframeProps} />
-    </div>
+    <>
+      {/* strategy="afterInteractive": carrega o script assim que a página
+          fica interativa, sem bloquear a renderização inicial (troca a
+          antiga injeção manual via document.createElement por cima do
+          carregador de scripts nativo do Next.js). */}
+      <Script
+        src="https://player.pandavideo.com.br/api.v2.js"
+        strategy="afterInteractive"
+      />
+      <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
+        <iframe {...iframeProps} />
+      </div>
+    </>
   );
 }
