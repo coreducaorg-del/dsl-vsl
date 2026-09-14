@@ -16,11 +16,19 @@ declare global {
     PandaPlayer?: new (
       id: string,
       options: { onReady: () => void }
-    ) => { loadWindowScreen: (opts: { panda_id_player: string }) => void };
+    ) => {
+      loadWindowScreen: (opts: { panda_id_player: string }) => void;
+      // Botão de CTA temporizado (aparece em um instante configurado no
+      // painel da Panda e leva ao checkout).
+      loadButtonInTime: (opts: { fetchApi: boolean }) => void;
+      setParentWindowUrl: () => void;
+    };
   }
 }
 
 const PANDA_ID_PLAYER = "panda-c0dda076-875f-4304-befb-66af54fd5631";
+// id da div de destino do botão de CTA, fornecido pelo painel da Panda.
+const PANDA_BUTTON_CONTAINER_ID = "3b2a49ad-41fe-4c2c-aac7-ac22e010afad";
 
 export default function PandaPlayer() {
   useEffect(() => {
@@ -47,6 +55,8 @@ export default function PandaPlayer() {
       const p = new window.PandaPlayer!(panda_id_player, {
         onReady() {
           p.loadWindowScreen({ panda_id_player });
+          p.loadButtonInTime({ fetchApi: true });
+          p.setParentWindowUrl();
         },
       });
     });
@@ -64,8 +74,13 @@ export default function PandaPlayer() {
   };
 
   return (
-    <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
-      <iframe {...iframeProps} />
-    </div>
+    <>
+      <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
+        <iframe {...iframeProps} />
+      </div>
+      {/* Destino do botão de CTA temporizado (loadButtonInTime), injetado
+          pelo próprio script da Panda no instante configurado no painel. */}
+      <div id={PANDA_BUTTON_CONTAINER_ID} />
+    </>
   );
 }
