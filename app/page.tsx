@@ -1,4 +1,4 @@
-import PandaPlayer from "@/components/PandaPlayer";
+import VturbPlayer from "@/components/VturbPlayer";
 import Footer from "@/components/Footer";
 
 // Página não deve ser cacheada como estática: a data no topo precisa
@@ -28,7 +28,7 @@ export default function Home() {
       {/* 2. ÁREA DO VÍDEO */}
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:py-24">
         <div className="relative mx-auto w-full max-w-[420px] overflow-hidden">
-          <PandaPlayer />
+          <VturbPlayer />
         </div>
       </main>
 
