@@ -34,70 +34,31 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/*
-          Tags de otimização de performance recomendadas pelo Panda Vídeo.
-
-          fetchPriority="low" nas que baixam bytes (as="style"/"fetch"):
-          por padrão, o navegador trata rel="preload" com alta prioridade,
-          o que pode competir por banda com os recursos críticos da primeira
-          renderização (CSS principal, fontes, JS da página) — e a barra de
-          urgência e o rodapé, que aparecem imediatamente, dependem desses
-          recursos críticos, não dos arquivos da Panda. Marcar como "low"
-          mantém o preload (o navegador ainda busca adiantado), só evita que
-          ele dispute prioridade com o conteúdo visível de imediato.
-          rel="dns-prefetch" e rel="prerender" não baixam corpo de resposta
-          da mesma forma, então não competem por banda e ficam como estão.
+          Tags de otimização de performance fornecidas pela VTurb (o player
+          de vídeo em uso agora — substituíram as tags equivalentes da Panda
+          Vídeo, removidas junto com a troca de player).
         */}
-        <link
-          rel="preload"
-          href="https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/css/plyr.css"
-          as="style"
-          fetchPriority="low"
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);`,
+          }}
         />
         <link
           rel="preload"
-          href="https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/css/styles.css"
-          as="style"
-          fetchPriority="low"
+          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6aae808619be3d2a59a84ab8/player.js"
+          as="script"
         />
         <link
           rel="preload"
-          href="https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/css/pb.css"
-          as="style"
-          fetchPriority="low"
+          href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
+          as="script"
         />
-        <link
-          rel="preload"
-          href="https://config.tv.pandavideo.com.br/vz-52703098-ed8/c0dda076-875f-4304-befb-66af54fd5631.json"
-          as="fetch"
-          crossOrigin="anonymous"
-          fetchPriority="low"
-        />
-        <link
-          rel="preload"
-          href="https://config.tv.pandavideo.com.br/vz-52703098-ed8/config.json"
-          as="fetch"
-          crossOrigin="anonymous"
-          fetchPriority="low"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://b-vz-52703098-ed8.tv.pandavideo.com.br"
-        />
-        <link
-          rel="preload"
-          href="https://b-vz-52703098-ed8.tv.pandavideo.com.br/c0dda076-875f-4304-befb-66af54fd5631/playlist.m3u8"
-          as="fetch"
-          crossOrigin="anonymous"
-          fetchPriority="low"
-        />
-        <link
-          rel="prerender"
-          href="https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/?v=c0dda076-875f-4304-befb-66af54fd5631"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://player-vz-52703098-ed8.tv.pandavideo.com.br"
-        />
+        <link rel="dns-prefetch" href="https://cdn.converteai.net" />
+        <link rel="dns-prefetch" href="https://scripts.converteai.net" />
+        <link rel="dns-prefetch" href="https://images.converteai.net" />
+        <link rel="dns-prefetch" href="https://m3u8.vturb.net" />
+        <link rel="dns-prefetch" href="https://license.vturb.com" />
         {/* Script oficial de rastreamento de UTMs da Utmify (baixado do
             painel em app.utmify.com.br > Integrações). Inserido via
             dangerouslySetInnerHTML, sem alteração, para preservar o
