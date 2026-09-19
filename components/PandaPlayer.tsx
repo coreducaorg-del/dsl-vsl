@@ -31,10 +31,13 @@ declare global {
   }
 }
 
-const PANDA_ID_PLAYER = "panda-c0dda076-875f-4304-befb-66af54fd5631";
+const PANDA_ID_PLAYER = "panda-636f6d70-2435-4a59-b7a4-f82f1d00927d";
 
 // Tempo (em segundos) em que o botão de CTA deve aparecer. Fácil de editar:
 // basta trocar os minutos/segundos abaixo.
+// ATENÇÃO: este id agora aponta para um grupo de Teste A/B com 5 Leads
+// diferentes — 16min53s foi calibrado para o Lead 1 original e pode não
+// ser o momento certo para as outras Leads do teste. Revisar/ajustar.
 const TEMPO_APARECER_BOTAO_SEGUNDOS = 16 * 60 + 53; // 16min53s - Lead 1
 
 // Link de checkout (Hubla) para onde o botão de CTA leva — o mesmo destino
@@ -89,7 +92,7 @@ export default function PandaPlayer() {
 
   const iframeProps: IframeProps = {
     id: PANDA_ID_PLAYER,
-    src: "https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/?v=c0dda076-875f-4304-befb-66af54fd5631&iosFakeFullscreen=true",
+    src: "https://player-vz-52703098-ed8.tv.pandavideo.com.br/embed/?v=636f6d70-2435-4a59-b7a4-f82f1d00927d&iosFakeFullscreen=true",
     style: { border: "none", position: "absolute", top: 0, left: 0 },
     allow: "accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture",
     allowFullScreen: true,
