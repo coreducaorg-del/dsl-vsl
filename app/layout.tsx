@@ -54,10 +54,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
           as="script"
         />
+        <link
+          rel="preload"
+          href="https://cdn.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/6aae926c19be3d2a59a8649e/main.m3u8"
+          as="fetch"
+        />
         <link rel="dns-prefetch" href="https://cdn.converteai.net" />
         <link rel="dns-prefetch" href="https://scripts.converteai.net" />
         <link rel="dns-prefetch" href="https://images.converteai.net" />
-        <link rel="dns-prefetch" href="https://m3u8.vturb.net" />
         <link rel="dns-prefetch" href="https://license.vturb.com" />
         {/* Script oficial de rastreamento de UTMs da Utmify (baixado do
             painel em app.utmify.com.br > Integrações). Inserido via
