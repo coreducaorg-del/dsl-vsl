@@ -32,9 +32,9 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       {/* 1. BARRA DE URGÊNCIA */}
-      <header className="w-full bg-black py-4 px-4 sm:py-5">
+      <header className="w-full bg-[#DC2626] py-4 px-4 sm:py-5">
         <p className="text-center text-lg font-bold text-white sm:text-xl">
-          ESSE VÍDEO SAI DO AR HOJE, {dataAtual}
+          ⚠️ ESSE VÍDEO SAI DO AR HOJE, {dataAtual}
         </p>
       </header>
 
