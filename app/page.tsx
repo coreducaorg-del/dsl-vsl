@@ -7,9 +7,22 @@ export const dynamic = "force-dynamic";
 
 function getDataAtualFormatada(): string {
   const hoje = new Date();
-  const dia = String(hoje.getDate()).padStart(2, "0");
-  const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-  const ano = hoje.getFullYear();
+
+  // Calcula sempre no fuso de São Paulo, independente do fuso do servidor
+  // (a Vercel roda em UTC) — sem isso, entre ~21h e 23h59 no horário de
+  // Brasília o relógio UTC já virou o dia seguinte, e a data exibida ficava
+  // um dia à frente do real. Intl.DateTimeFormat nativo, sem libs externas.
+  const partes = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).formatToParts(hoje);
+
+  const dia = partes.find((p) => p.type === "day")?.value ?? "";
+  const mes = partes.find((p) => p.type === "month")?.value ?? "";
+  const ano = partes.find((p) => p.type === "year")?.value ?? "";
+
   return `${dia}/${mes}/${ano}`;
 }
 
