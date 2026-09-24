@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import VturbPlayer from "@/components/VturbPlayer";
 import Footer from "@/components/Footer";
 
 // Página não deve ser cacheada como estática: a data no topo precisa
 // refletir o dia em que o visitante está acessando, não o dia do build.
 export const dynamic = "force-dynamic";
+
+// Metadados específicos da página principal (sobrescrevem os genéricos do
+// Root Layout só nesta rota) — controlam como o link aparece ao ser
+// compartilhado no Facebook, WhatsApp, Instagram etc. Sem og:image por
+// enquanto, já que não há uma imagem definida para isso.
+export const metadata: Metadata = {
+  title: "Método Revelado",
+  description: "Último dia pra ver a aula",
+  openGraph: {
+    title: "Método Revelado",
+    description: "Último dia pra ver a aula",
+  },
+};
 
 function getDataAtualFormatada(): string {
   const hoje = new Date();
