@@ -58,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           rel="preload"
           href="https://cdn.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/6aae926c19be3d2a59a8649e/main.m3u8"
           as="fetch"
+          crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://cdn.converteai.net" />
         <link rel="dns-prefetch" href="https://scripts.converteai.net" />
