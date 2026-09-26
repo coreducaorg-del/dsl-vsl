@@ -21,17 +21,23 @@ declare module "react" {
   }
 }
 
-// Player individual e definitivo da Lead vencedora do Teste A/B (substitui
-// o embed do grupo de teste, que apontava para "/ab-test/").
-const VTURB_SCRIPT_SRC =
-  "https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6aae92d23be3e7a277daa6a0/v4/player.js";
-
 // Tempo máximo (ms) de espera pelo spinner antes de escondê-lo de qualquer
 // jeito — fallback de segurança caso o Custom Element nunca seja definido
 // (ex.: bloqueio de script por adblock), para não girar pra sempre.
 const LOADING_FALLBACK_MS = 8000;
 
-export default function VturbPlayer() {
+type VturbPlayerProps = {
+  /** Id do elemento <vturb-smartplayer> (varia por vídeo/oferta). */
+  id: string;
+  /** URL do script "player.js" específico deste vídeo, fornecida pelo
+   *  painel da VTurb (varia por vídeo/oferta). */
+  scriptSrc: string;
+};
+
+// Componente reutilizável: qualquer vídeo da VTurb usado no site (VSL
+// principal, upsells futuros etc.) passa por aqui, cada um com seu próprio
+// `id` e `scriptSrc` — evita duplicar este componente inteiro por vídeo.
+export default function VturbPlayer({ id, scriptSrc }: VturbPlayerProps) {
   // Controla o spinner: começa visível, esconde assim que o navegador
   // registrar a classe do Web Component da VTurb (script carregado e
   // executado) — sinal nativo mais confiável de que o player está
@@ -41,9 +47,9 @@ export default function VturbPlayer() {
   useEffect(() => {
     // Mesma checagem usada no PandaPlayer: só injeta o script se ele ainda
     // não estiver na página, evitando duplicação em re-renderizações.
-    if (!document.querySelector(`script[src="${VTURB_SCRIPT_SRC}"]`)) {
+    if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
       const s = document.createElement("script");
-      s.src = VTURB_SCRIPT_SRC;
+      s.src = scriptSrc;
       s.async = true;
       document.head.appendChild(s);
     }
@@ -59,7 +65,7 @@ export default function VturbPlayer() {
       cancelled = true;
       clearTimeout(fallback);
     };
-  }, []);
+  }, [scriptSrc]);
 
   return (
     // Wrapper que NÓS controlamos (fora do <vturb-smartplayer>) para
@@ -77,10 +83,7 @@ export default function VturbPlayer() {
         margin: "0 auto",
       }}
     >
-      <vturb-smartplayer
-        id="vid-6aae92d23be3e7a277daa6a0"
-        style={{ display: "block", width: "100%" }}
-      >
+      <vturb-smartplayer id={id} style={{ display: "block", width: "100%" }}>
         {/* Placeholder: reserva o espaço do vídeo (proporção 9:16) desde o
             primeiro render, evitando layout shift enquanto o player da
             VTurb carrega. */}
