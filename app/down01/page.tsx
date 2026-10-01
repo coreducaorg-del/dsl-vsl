@@ -145,7 +145,7 @@ export default function Downsell01() {
           </div>
 
           {/* b) HEADLINE PRINCIPAL */}
-          <h1 className="mt-4 text-center text-2xl font-extrabold uppercase leading-tight text-black sm:text-3xl md:text-4xl">
+          <h1 className="mt-4 text-center text-3xl font-extrabold uppercase leading-tight text-black md:text-4xl">
             Essa é a sua última chance de entrar no acompanhamento com{" "}
             <span className="text-[#DC2626]">mais de 50% de desconto!</span>
           </h1>
@@ -164,9 +164,12 @@ export default function Downsell01() {
             </p>
             <p>
               Por isso, somente aqui agora, vou te entregar o mesmo
-              acompanhamento, porém com 1 ano de duração — tempo mais que
-              suficiente para ver todas as aulas e atingir a fluência no
-              coreano.
+              acompanhamento,{" "}
+              <strong className="font-bold text-black">
+                porém com 1 ano de duração
+              </strong>{" "}
+              — tempo mais que suficiente para ver todas as aulas e atingir
+              a fluência no coreano.
             </p>
           </div>
 
