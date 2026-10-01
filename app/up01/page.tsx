@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import VturbPlayer from "@/components/VturbPlayer";
+import DownsellCtaButton from "@/components/DownsellCtaButton";
 
 // Texto do banner de urgência do topo — fácil de editar. A parte destacada
 // ("quase completa") fica separada do resto pra poder ter um peso de fonte
@@ -14,6 +15,10 @@ const TEXTO_SECUNDARIO =
 
 // Percentual exibido na barra de progresso.
 const PROGRESSO_PERCENTUAL = 78;
+
+// Id do player VTurb desta oferta — usado tanto para montar o embed quanto
+// para o DownsellCtaButton localizar o botão de CTA nativo correspondente.
+const VIDEO_PLAYER_ID = "vid-6ab7bcae5f99ef73c248f9ef";
 
 export default function Upsell01() {
   return (
@@ -91,14 +96,18 @@ export default function Upsell01() {
 
             {/* d) VÍDEO — embed real da VTurb para esta oferta de upsell.
                 O botão de CTA já vem embutido, configurado direto no
-                painel da VTurb — não precisa de botão customizado nesta
-                página. */}
+                painel da VTurb. */}
             <div className="relative mx-auto mt-8 w-full max-w-[420px] overflow-hidden rounded-lg sm:mt-10">
               <VturbPlayer
-                id="vid-6ab7bcae5f99ef73c248f9ef"
+                id={VIDEO_PLAYER_ID}
                 scriptSrc="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6ab7bcae5f99ef73c248f9ef/v4/player.js"
               />
             </div>
+
+            {/* d.1) BOTÃO DE DOWNSELL — oculto por padrão, só aparece no
+                exato momento em que o CTA nativo da VTurb se torna
+                visível (ver components/DownsellCtaButton.tsx). */}
+            <DownsellCtaButton playerId={VIDEO_PLAYER_ID} />
           </div>
         </main>
 
