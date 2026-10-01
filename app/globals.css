@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
+
+/* Pulso sutil para os botões de CTA — leve aumento de escala + sombra
+   mais intensa no pico, em loop suave, sem movimento abrupto. */
+@keyframes pulse-cta {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px -1px rgba(4, 162, 2, 0.3),
+      0 2px 4px -2px rgba(4, 162, 2, 0.3);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px -2px rgba(4, 162, 2, 0.45),
+      0 4px 8px -4px rgba(4, 162, 2, 0.45);
+  }
+}
