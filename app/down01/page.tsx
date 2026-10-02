@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 
 const CHECKOUT_URL = "https://pay.hub.la/AVB4X3lgxwWW2nouZgV8";
 
-// Cronômetro começa em 11:00 (11 minutos) e conta regressivamente.
-const CONTAGEM_INICIAL_SEGUNDOS = 11 * 60;
+// Cronômetro começa em 12:05 (12 minutos e 5 segundos) e conta regressivamente.
+const CONTAGEM_INICIAL_SEGUNDOS = 12 * 60 + 5;
 
 const PERGUNTAS_FREQUENTES = [
   {
