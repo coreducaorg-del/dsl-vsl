@@ -110,7 +110,7 @@ export default function DownsellModal({
           id="downsell-modal-titulo"
           className="text-center text-lg font-bold leading-snug text-black sm:text-xl"
         >
-          Espere! Você precisa confirmar que está desistindo para sempre da
+          Espere! Você precisa confirmar que está desistindo PARA SEMPRE da
           oportunidade de entrar no meu acompanhamento Dominando o Coreano de 2
           anos pelo menor preço já feito até agora: apenas 12x de R$69,90.. uma
           economia de R$300 em relação ao valor original.
