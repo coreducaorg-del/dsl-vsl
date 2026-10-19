@@ -51,7 +51,7 @@ export default function PaymentChangeNotice({ visible }: PaymentChangeNoticeProp
 
       <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-300">
         <p>
-          1) Se você pagou o produto principal à vista no cartão (ou em poucas
+          1) Se você pagou o produto anterior à vista no cartão (ou em poucas
           parcelas) e agora quer parcelar em mais vezes;
         </p>
         <p>2) Ou se agora quer pagar com 2 cartões;</p>
