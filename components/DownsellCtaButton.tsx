@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import DownsellModal from "@/components/DownsellModal";
+import PaymentChangeNotice from "@/components/PaymentChangeNotice";
 
 // Seletor do botão de CTA nativo da VTurb (confirmado via inspeção: fica
 // no DOM normal, sem Shadow DOM). O elemento já existe desde o início —
@@ -97,6 +98,10 @@ export default function DownsellCtaButton({ playerId }: DownsellCtaButtonProps) 
           Agora não é melhor momento, vou passar
         </button>
       )}
+
+      {/* Aparece junto com o botão de recusa; sempre montado (só escondido
+          por CSS) para o link ser varrido pela Utmify no carregamento. */}
+      <PaymentChangeNotice visible={visivel} />
 
       {/* Sempre montado (só escondido por CSS) — ver DownsellModal. */}
       <DownsellModal
