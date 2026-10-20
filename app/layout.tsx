@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="preload"
-          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6abdc884462630559fb2aada/v4/player.js"
+          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6ad6f085061c75c8923823fb/v4/player.js"
           as="script"
         />
         <link
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="preload"
-          href="https://cdn.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/6abdc816eac5ba6ec6885a9f/main.m3u8"
+          href="https://cdn.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/6ad6ef21c384f69146b75b3c/main.m3u8"
           as="fetch"
           crossOrigin="anonymous"
         />
