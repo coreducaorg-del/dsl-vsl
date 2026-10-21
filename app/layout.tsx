@@ -46,19 +46,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="preload"
-          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6ad6f085061c75c8923823fb/v4/player.js"
+          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6ad8246b16843b6d2ec5f7e6/v4/player.js"
           as="script"
         />
         <link
           rel="preload"
           href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
           as="script"
-        />
-        <link
-          rel="preload"
-          href="https://cdn.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/6ad6ef21c384f69146b75b3c/main.m3u8"
-          as="fetch"
-          crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://cdn.converteai.net" />
         <link rel="dns-prefetch" href="https://scripts.converteai.net" />
