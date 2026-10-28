@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="preload"
-          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6ae1828746271b50ab054446/player.js"
+          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/players/6ad8246b16843b6d2ec5f7e6/v4/player.js"
           as="script"
         />
         <link
@@ -57,7 +57,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="dns-prefetch" href="https://cdn.converteai.net" />
         <link rel="dns-prefetch" href="https://scripts.converteai.net" />
         <link rel="dns-prefetch" href="https://images.converteai.net" />
-        <link rel="dns-prefetch" href="https://m3u8.vturb.net" />
         <link rel="dns-prefetch" href="https://license.vturb.com" />
         {/* Script oficial de rastreamento de UTMs da Utmify (baixado do
             painel em app.utmify.com.br > Integrações). Inserido via
