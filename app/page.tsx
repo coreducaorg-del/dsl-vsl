@@ -56,8 +56,8 @@ export default function Home() {
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:py-24">
         <div className="relative mx-auto w-full max-w-[420px] overflow-hidden">
           <VturbPlayer
-            id="ab-6ae6b951e1e6b24317fb2523"
-            scriptSrc="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6ae6b951e1e6b24317fb2523/player.js"
+            id="ab-6af6acbe40ab0c1e12e2d894"
+            scriptSrc="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6af6acbe40ab0c1e12e2d894/player.js"
           />
         </div>
       </main>
