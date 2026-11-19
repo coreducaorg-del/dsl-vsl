@@ -39,14 +39,11 @@ export default function Upsell02() {
       <link rel="dns-prefetch" href="https://images.converteai.net" />
       <link rel="dns-prefetch" href="https://license.vturb.com" />
 
-      <div className="flex min-h-screen flex-col bg-black">
-        {/* 1. FAIXA VERMELHA FINA */}
-        <div className="h-2 w-full bg-[#DC2626] sm:h-2.5" />
-
+      <div className="flex min-h-screen flex-col bg-white">
         <main className="flex flex-1 flex-col items-center px-4 py-10 sm:py-16">
           <div className="mx-auto w-full max-w-[480px]">
-            {/* 2. HEADLINE */}
-            <h1 className="text-center text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            {/* 1. HEADLINE */}
+            <h1 className="text-center text-3xl font-extrabold leading-tight text-black sm:text-4xl">
               Assista a esse recado e resgate{" "}
               <u className="underline decoration-2 underline-offset-[6px]">
                 seu prêmio
@@ -54,7 +51,7 @@ export default function Upsell02() {
               !
             </h1>
 
-            {/* 3. VÍDEO */}
+            {/* 2. VÍDEO */}
             <div className="relative mx-auto mt-5 w-full max-w-[420px] overflow-hidden rounded-lg">
               <VturbPlayer
                 id="vid-6afe72d992aee83660659bde"
@@ -64,7 +61,7 @@ export default function Upsell02() {
           </div>
         </main>
 
-        {/* 4. RODAPÉ */}
+        {/* 3. RODAPÉ */}
         <Footer />
       </div>
     </>
