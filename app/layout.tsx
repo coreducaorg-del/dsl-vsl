@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="preload"
-          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6af6acbe40ab0c1e12e2d894/player.js"
+          href="https://scripts.converteai.net/dda5cf5d-f047-4bf8-b030-7f12b60b4043/ab-test/6b03ccb8e98413e66d667f08/player.js"
           as="script"
         />
         <link
