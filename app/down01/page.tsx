@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 
-const CHECKOUT_URL = "https://pay.hub.la/AVB4X3lgxwWW2nouZgV8";
+const CHECKOUT_URL =
+  "https://pay.hub.la/AVB4X3lgxwWW2nouZgV8/fast-checkout?plan=AVB4X3lgxwWW2nouZgV8_one_time_49100_BRL";
 
 // Cronômetro começa em 12:05 (12 minutos e 5 segundos) e conta regressivamente.
 const CONTAGEM_INICIAL_SEGUNDOS = 12 * 60 + 5;
